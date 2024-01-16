@@ -13,3 +13,9 @@ color: white;
   .text {
     background-color: aquamarine;
   } 
+  button {
+  cursor: pointer;
+  }
+  ion-icon {
+  cursor: pointer;
+  }

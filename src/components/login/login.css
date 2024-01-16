@@ -1,0 +1,23 @@
+.login {
+  width: 100%;
+}
+.login-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+.login-main {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  text-align: center;
+  background-color: rgb(224, 224, 224);
+  border-radius: 4px;
+  gap: 5px;
+  padding: 4px;
+}
+.login-main div {
+  color: rgb(0, 0, 0);
+}
