@@ -1,8 +1,8 @@
 .edit ion-icon {
-    font-size: 1.3rem;
+  font-size: 1.3rem;
 }
 .edit {
-
-position: absolute;
-right: 10px;
+  top: 5px;
+  position: absolute;
+  right: 5px;
 }

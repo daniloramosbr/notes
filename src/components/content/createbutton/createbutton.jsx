@@ -1,15 +1,15 @@
-import './createbutton.css'
-import { useNavigate } from 'react-router-dom'
+import "./createbutton.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Create() {
-const navigate = useNavigate()
+  const navigate = useNavigate();
 
-function CreateNote() {
-  navigate('/create')
-}
+  function CreateNote() {
+    navigate("/create");
+  }
   return (
-    <button className='button-create' onClick={CreateNote}>
-       <ion-icon name="add-circle-outline"></ion-icon>
+    <button className="button-create" onClick={CreateNote}>
+      <ion-icon name="add-circle-outline"></ion-icon>
     </button>
-  )
+  );
 }

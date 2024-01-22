@@ -1,17 +1,19 @@
 .create-cont {
-    width: 100%;
-    }
-    .create-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    
-    }
-    .cont-main-create {
-    border-radius: 4px;
-    text-align: center;
-    background-color: rgb(7, 0, 61);
-    width: 500px;
-    padding: 15px 0 15px 0;
-    }
+  width: 100%;
+}
+.create-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.cont-main-create {
+  border-radius: 4px;
+  text-align: center;
+  background-color: rgb(7, 0, 61);
+  width: 500px;
+  padding: 15px 0 15px 0;
+}
+.text-cont {
+  height: 6rem;
+}

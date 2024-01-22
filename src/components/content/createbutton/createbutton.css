@@ -1,10 +1,10 @@
 .button-create {
-    font-size: 35px;
-    background-color: rgb(7, 0, 61);
-    cursor: pointer;
-    border: 0;
-    margin-top: 5px;
+  font-size: 35px;
+  background-color: rgb(7, 0, 61);
+  cursor: pointer;
+  border: 0;
+  margin-top: 5px;
 }
-.button-create ion-icon{
-color: aliceblue;
+.button-create ion-icon {
+  color: aliceblue;
 }

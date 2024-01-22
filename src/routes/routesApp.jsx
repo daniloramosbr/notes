@@ -3,8 +3,9 @@ import Create from "../components/create/create"
 import Info from "../components/info/info"
 import Content from "../components/content/contentOfc/content"
 import Edit from "../components/edit/edit"
-import CreateLogin from "../components/login/createLogin"
+import SignUp from "../components/login/signup"
 import Signin from "../components/login/signin"
+import ErrorUrl from "../components/Error/error"
 
 export default function RoutesApp() {
   
@@ -15,8 +16,9 @@ export default function RoutesApp() {
     <Route path="/info/:title" element={<Info/>} />
     <Route path="/create" element={<Create/>} />
     <Route path="/edit/:title" element={<Edit/>} />
-    <Route path="/signup" element={<CreateLogin/>} />
-    <Route path="/signin" element={<Signin/>} />
+    <Route path="/notes/signup" element={<SignUp/>} />
+    <Route path="/notes/signin" element={<Signin/>} />
+    <Route path="/error" element={<ErrorUrl/>} />
 
   </Routes>
   </BrowserRouter>

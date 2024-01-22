@@ -1,14 +1,16 @@
-import './login.css'
-import { useState } from 'react';
-import api from '../api/api';
-import { useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
-import { jwtDecode } from 'jwt-decode';
+import "./login.css";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
+import ApiController from "../controllers/ApiController";
 
 export default function Signin() {
+  const [error, setError] = useState(false);
+  const [ErrLogin, setErrLogin] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [dataForm, setDataForm] = useState({
     email: "",
@@ -23,35 +25,53 @@ export default function Signin() {
   };
 
   async function GetSignin() {
-try {
-  
-const res = await api.ValidLogin(dataForm.email, dataForm.password)
+    if (!dataForm.email || !dataForm.password) {
+      setError(true);
 
-Cookies.set('token', res.data, {expires: 1})
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
+      return;
+    }
 
-const decode = jwtDecode(res.data)
+    setLoading(true);
 
-const {user} = decode
+    try {
+      const res = await ApiController.ValidLogin(
+        dataForm.email,
+        dataForm.password
+      );
 
-navigate(`/notes/${user}`)
+      Cookies.set("token", res.data, { expires: 1 });
 
-console.log(res.data)
+      const decode = jwtDecode(res.data);
 
+      const { user } = decode;
 
-} catch (error) {
-  console.log(error.message)
-}
+      navigate(`/notes/${user}`);
 
+      setLoading(false);
+    } catch (error) {
+      if (error) {
+        setErrLogin(true);
+        setLoading(false);
 
+        setTimeout(() => {
+          setErrLogin(false);
+        }, 3000);
+      }
+    }
+  }
+
+  function GoSignUp() {
+    navigate("/notes/signup");
   }
 
   return (
     <div className="login">
       <div className="login-cont">
         <main className="login-main">
-          <div>
-            FAZER LOGIN:
-          </div>
+          <h2 className="title">FAZER LOGIN:</h2>
           <form onSubmit={HandleChange}>
             <div>
               <input
@@ -68,12 +88,27 @@ console.log(res.data)
               />
             </div>
           </form>
-
-          <div>
+          {error ? (
+            <div className="error">
+              <span> ERRO, PREENCHA TODOS OS CAMPOS!</span>
+            </div>
+          ) : (
+            ""
+          )}
+          {ErrLogin ? (
+            <div className="error">
+              <span> ERRO: SENHA OU USUARIO INCORRETOS!</span>
+            </div>
+          ) : (
+            ""
+          )}
+          {loading ? <div>LOGANDO...</div> : ""}
+          <div className="buttons">
             <button onClick={GetSignin}>ENTRAR</button>
+            <button onClick={GoSignUp}> CRIAR NOVA CONTA</button>
           </div>
         </main>
       </div>
     </div>
-  )
+  );
 }

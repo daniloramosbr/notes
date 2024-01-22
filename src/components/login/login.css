@@ -11,13 +11,61 @@
 .login-main {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 400px;
   text-align: center;
-  background-color: rgb(224, 224, 224);
+  background-color: rgb(7, 0, 61);
   border-radius: 4px;
-  gap: 5px;
+  gap: 10px;
   padding: 4px;
 }
 .login-main div {
-  color: rgb(0, 0, 0);
+  color: rgb(235, 235, 235);
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  text-align: center;
+  align-items: center;
+}
+.buttons button {
+  font-family: "Poppins", sans-serif;
+  height: 2rem;
+  width: 100%;
+}
+.buttons button:hover {
+  background-color: rgb(12, 0, 104);
+  color: aliceblue;
+}
+form div input {
+  width: 50%;
+  height: 1.5rem;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.error span {
+  color: rgb(255, 0, 0);
+}
+.title {
+  font-family: "Poppins", sans-serif;
+}
+@media (max-width: 600px) {
+  .login {
+    width: 100%;
+  }
+  .login-cont {
+    width: 100%;
+  }
+  .login-main {
+    width: 100%;
+  }
+
+  form div input {
+    width: 90%;
+    height: 1.7rem;
+  }
 }

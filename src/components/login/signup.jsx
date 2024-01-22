@@ -1,11 +1,14 @@
-import axios from "axios";
+
 import "./login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import ApiController from "../controllers/ApiController";
 
 
-export default function CreateLogin() {
+export default function SignUp() {
+
+  const [error, setError] = useState(true)
 
 
   const navigate = useNavigate()
@@ -25,9 +28,20 @@ export default function CreateLogin() {
 
   async function PostDados() {
 
+    if (!dataForm.email || !dataForm.password || !dataForm.username) {
+      setError(false)
+      
+    setTimeout(()=>{
+
+      setError(true)
+    
+  },3000)
+      return
+    }
+
     try {
 
-     const res = await axios.post('https://api-notes-k22z.onrender.com/signup', dataForm)
+     const res = await ApiController.PostUser(dataForm)
 
     Cookies.set('token', res.data , {expires: 1})
 
@@ -40,13 +54,18 @@ export default function CreateLogin() {
   
   }
 
+  function GoSignIn () {
+
+    navigate('/notes/signin')
+  }
+
   return (
     <div className="login">
       <div className="login-cont">
         <main className="login-main">
-          <div>
+          <h2 className="title">
             CRIE SUA CONTA:
-          </div>
+          </h2>
           <form onSubmit={HandleChange}>
             <div>
               <input
@@ -70,9 +89,12 @@ export default function CreateLogin() {
               />
             </div>
           </form>
-
-          <div>
+          {!error ? <div className='error'>
+           <span> ERRO, PREENCHA TODOS OS CAMPOS!</span>
+          </div> : '' }
+          <div className="buttons">
             <button onClick={PostDados}>CADASTRAR</button>
+            <button onClick={GoSignIn}>JÁ TEM CONTA? </button>
           </div>
         </main>
       </div>

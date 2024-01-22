@@ -1,4 +1,4 @@
-.title {
+.header {
 display: flex;
 text-align: center;
 justify-content: center;
@@ -7,4 +7,40 @@ margin-top: 10px;
 height: 3rem;
 width: 100%;
 background-color: rgb(7, 0, 61);
+position: relative;
+}
+.user {
+right: 1rem;
+position: absolute;
+display: flex;
+gap: 20px;
+align-items: center;
+}
+.user div ion-icon {
+font-size: 20px;
+}
+@media (max-width: 600px) {
+
+    .header {
+       
+        
+        margin-top: 10px;
+        height: 3rem;
+        width: 100%;
+        background-color: rgb(7, 0, 61);
+       
+        }
+
+        .user {
+            right: 5px;
+            position: absolute;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+           
+            }
+        
+        .user-icon {
+       display: none;
+        }
 }
