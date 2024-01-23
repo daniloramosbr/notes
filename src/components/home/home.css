@@ -1,0 +1,22 @@
+.home {
+width: 100%;
+}
+.cont-home {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+.home-main {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    text-align: center;
+    background-color: rgb(62, 56, 111);
+    border-radius: 4px;
+    gap: 10px;
+    padding: 20px 10px 20px 10px
+}
+.home-main h1 {
+    font-family: "Poppins", sans-serif;
+}

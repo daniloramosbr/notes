@@ -1,18 +1,14 @@
-
 import "./login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import ApiController from "../controllers/ApiController";
 
-
 export default function SignUp() {
+  const [error, setError] = useState(true);
 
-  const [error, setError] = useState(true)
+  const navigate = useNavigate();
 
-
-  const navigate = useNavigate()
-  
   const [dataForm, setDataForm] = useState({
     username: "",
     email: "",
@@ -27,45 +23,35 @@ export default function SignUp() {
   };
 
   async function PostDados() {
-
     if (!dataForm.email || !dataForm.password || !dataForm.username) {
-      setError(false)
-      
-    setTimeout(()=>{
+      setError(false);
 
-      setError(true)
-    
-  },3000)
-      return
+      setTimeout(() => {
+        setError(true);
+      }, 3000);
+      return;
     }
 
     try {
+      const res = await ApiController.PostUser(dataForm);
 
-     const res = await ApiController.PostUser(dataForm)
+      Cookies.set("token", res.data, { expires: 1 });
 
-    Cookies.set('token', res.data , {expires: 1})
-
-     navigate('/create')
-      
+      navigate("/create");
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
     }
-
-  
   }
 
-  function GoSignIn () {
-
-    navigate('/notes/signin')
+  function GoSignIn() {
+    navigate("/notes/signin");
   }
 
   return (
     <div className="login">
       <div className="login-cont">
         <main className="login-main">
-          <h2 className="title">
-            CRIE SUA CONTA:
-          </h2>
+          <h2 className="title">CRIE SUA CONTA:</h2>
           <form onSubmit={HandleChange}>
             <div>
               <input
@@ -89,9 +75,13 @@ export default function SignUp() {
               />
             </div>
           </form>
-          {!error ? <div className='error'>
-           <span> ERRO, PREENCHA TODOS OS CAMPOS!</span>
-          </div> : '' }
+          {!error ? (
+            <div className="error">
+              <span> ERRO, PREENCHA TODOS OS CAMPOS!</span>
+            </div>
+          ) : (
+            ""
+          )}
           <div className="buttons">
             <button onClick={PostDados}>CADASTRAR</button>
             <button onClick={GoSignIn}>JÁ TEM CONTA? </button>

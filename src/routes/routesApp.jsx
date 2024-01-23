@@ -6,12 +6,14 @@ import Edit from "../components/edit/edit"
 import SignUp from "../components/login/signup"
 import Signin from "../components/login/signin"
 import ErrorUrl from "../components/Error/error"
+import Teste from "../components/home/home"
 
 export default function RoutesApp() {
   
   return (
   <BrowserRouter>
   <Routes>
+    <Route path="/notes" element={<Teste/>} />
     <Route path="/notes/:user" element={<Content/>} />
     <Route path="/info/:title" element={<Info/>} />
     <Route path="/create" element={<Create/>} />
