@@ -17,11 +17,16 @@ background-color: rgb(62, 56, 111);
 display: flex;
 flex-direction: column;
 width: 500px;
-gap: 10px;
+gap: 15px;
 padding: 0px 0 15px 0;
 }
 .title-info{
     background-color: rgb(62, 56, 111);
+    border:  2px solid rgb(41, 41, 41);
+    margin-top: 8px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 @media (max-width: 600px) {
 

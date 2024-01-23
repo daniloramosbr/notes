@@ -28,7 +28,7 @@ export default function Info() {
           <div className="cont-main-info">
             <ButtonEdit title={data.title} />
 
-            <h1 className="title-info">{data.title}</h1>
+           <div className="title-info"> <h1 >{data.title}</h1></div>
 
             <div className="note-info">{data.note}</div>
             <div>

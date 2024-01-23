@@ -51,7 +51,6 @@ export default function Content() {
     GetDados();
   }, []);
 
-  console.log(res.length);
   return (
     <div className="content">
       <Header />
