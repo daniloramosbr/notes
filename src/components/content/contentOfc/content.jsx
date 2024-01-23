@@ -22,9 +22,10 @@ export default function Content() {
   const [res, setRes] = useState({});
 
   useEffect(() => {
+
     const url = window.location.href;
 
-    if (url != `http://localhost:3000/notes/${user}`) {
+    if (url != `https://daniloramosbr.github.io/notes/${user}`) {
       navigate("/error");
       return;
     }
