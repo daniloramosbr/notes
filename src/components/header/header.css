@@ -6,7 +6,7 @@ align-items: center;
 margin-top: 10px;
 height: 3rem;
 width: 100%;
-background-color: rgb(7, 0, 61);
+background-color: rgb(12, 0, 104);
 position: relative;
 }
 .user {
@@ -27,7 +27,7 @@ font-size: 20px;
         margin-top: 10px;
         height: 3rem;
         width: 100%;
-        background-color: rgb(7, 0, 61);
+        background-color: rgb(12, 0, 104);
        
         }
 
