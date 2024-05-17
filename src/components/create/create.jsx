@@ -7,6 +7,7 @@ import Header from "../header/header";
 import ApiController from "../controllers/ApiController";
 
 export default function Create() {
+  
   const cookie = Cookies.get("token");
   const decode = jwtDecode(cookie);
   const { id, user } = decode;

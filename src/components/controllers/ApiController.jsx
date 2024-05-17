@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "https://api-notes-k22z.onrender.com";
+const url = "https://api-notes-amber.vercel.app";
 
 class ApiController {
   async GetNotes(user) {
@@ -56,7 +56,7 @@ class ApiController {
   async PostUser(data) {
     try {
       return await axios.post(
-        "https://api-notes-k22z.onrender.com/signup",
+        "https://api-notes-amber.vercel.app/signup",
         data
       );
     } catch (error) {

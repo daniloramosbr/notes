@@ -10,17 +10,18 @@
   align-items: center;
   flex-wrap: wrap;
 }
-.my-notes {
-  display: flex;
-  padding: 5px 0 5px 0;
-  justify-content: center;
-  text-align: center;
-}
+
 .content-main {
   border-radius: 4px;
   text-align: center;
   background-color: rgb(62, 56, 111);
   width: 500px;
+}
+.my-notes {
+  display: flex;
+  padding: 5px 0 5px 0;
+  justify-content: center;
+  text-align: center;
 }
 
 @media (max-width: 600px) {
