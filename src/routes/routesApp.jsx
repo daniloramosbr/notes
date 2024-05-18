@@ -1,12 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Create from "../components/create/create"
 import Info from "../components/info/info"
-import Content from "../components/content/contentOfc/content"
 import Edit from "../components/edit/edit"
 import SignUp from "../components/login/signup"
 import Signin from "../components/login/signin"
-import ErrorUrl from "../components/Error/error"
 import Home from "../components/home/home"
+import Content from "../components/content/content"
 
 export default function RoutesApp() {
   
@@ -20,7 +19,6 @@ export default function RoutesApp() {
     <Route path="/edit/:title" element={<Edit/>} />
     <Route path="/notes/signup" element={<SignUp/>} />
     <Route path="/notes/signin" element={<Signin/>} />
-    <Route path="/error" element={<ErrorUrl/>} />
 
   </Routes>
   </BrowserRouter>

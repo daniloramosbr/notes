@@ -82,27 +82,23 @@ export default function Signin() {
             </div>
             <div>
               <input
-                name="password"
+                name="password" type="password"
                 placeholder="Senha:"
                 onChange={HandleChange}
               />
             </div>
           </form>
-          {error ? (
+          {error && (
             <div className="error">
               <span> ERRO, PREENCHA TODOS OS CAMPOS!</span>
             </div>
-          ) : (
-            ""
           )}
-          {ErrLogin ? (
+          {ErrLogin && (
             <div className="error">
               <span> ERRO: SENHA OU USUARIO INCORRETOS!</span>
             </div>
-          ) : (
-            ""
-          )}
-          {loading ? <div>LOGANDO...</div> : ""}
+          ) }
+          {loading && <div className="load"><div class="spinner"></div></div> }
           <div className="buttons">
             <button onClick={GetSignin}>ENTRAR</button>
             <button onClick={GoSignUp}> CRIAR NOVA CONTA</button>

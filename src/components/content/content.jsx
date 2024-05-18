@@ -1,18 +1,20 @@
-import Header from "../../header/header";
-import Onecontent from "../onecontent/onecontent";
+import Header from "../header/header";
+import Onecontent from "./onecontent";
 import "./content.css";
-import Create from "../createbutton/createbutton";
 import { useEffect, useState } from "react";
-import ApiController from "../../controllers/ApiController";
+import ApiController from "../controllers/ApiController";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
 export default function Content() {
-  const navigate = useNavigate();
+  
+  const navigate = useNavigate()
   const cookie = Cookies.get("token");
   const decode = jwtDecode(cookie);
   const { id, user } = decode;
+
+  console.log(user)
 
   const [showNotes, setShowNotes] = useState(false);
   const [showNothing, setNothing] = useState(false);
@@ -23,12 +25,10 @@ export default function Content() {
 
   useEffect(() => {
 
-    const url = window.location.href;
-
-    if (url != `https://daniloramosbr.github.io/notes/${user}`) {
-      navigate("/error");
-      return;
+    if (!user) {
+      navigate('/notes/signin')
     }
+  
 
     async function GetDados() {
       setLoading(true);
@@ -49,22 +49,28 @@ export default function Content() {
     }
 
     GetDados();
-  }, []);
+  }, [])
+
+  function CreateNote() {
+    navigate("/create");
+  }
 
   return (
     <div className="content">
       <Header />
       <div className="cont-content">
         <div className="content-main">
-          <Create />
+        <button className="button-create" onClick={CreateNote}>
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </button>
 
           <div className="my-notes">
-            <h1 hidden={notes}>SUAS NOTAS:</h1>
+            <h2 hidden={notes}>SUAS NOTAS:</h2>
           </div>
 
-          {showLoading ? <h3>CARREGANDO...</h3> : ""}
+          {showLoading &&<div className="load"><div class="spinner"></div></div> }
 
-          {showNothing ? <h3>VOCÊ AINDA NÃO TEM NOTAS</h3> : ""}
+          {showNothing && <h3>VOCÊ AINDA NÃO TEM NOTAS</h3> }
 
           {showNotes
             ? res.map((note) => {

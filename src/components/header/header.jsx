@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const navigate = useNavigate();
-  const user = Cookies.get("token");
-  const decode = jwtDecode(user);
+  const token = Cookies.get("token");
+  const decode = jwtDecode(token);
+
+  const {user, id} = decode
 
   const LogoutNotes = () => {
     Cookies.remove("token");
@@ -20,10 +22,10 @@ export default function Header() {
       <div className="user">
         <div className="user-icon">
           <ion-icon name="person-circle-outline"></ion-icon>
-          <h4>Olá {decode.user}</h4>
+          <h4>Olá <span>{user}</span>  </h4>
         </div>
 
-        <div>
+        <div className="logout">
           <button onClick={LogoutNotes}>SAIR</button>
         </div>
       </div>

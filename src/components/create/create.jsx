@@ -90,13 +90,12 @@ export default function Create() {
               <label htmlFor="texto">TEXTO:</label>
               <input
                 name="texto"
-                className="text-cont"
                 onChange={HandleChange}
               />
             </div>
           </form>
 
-          <div>
+          <div className="button-create">
             <button onClick={CreateNote}>CRIAR NOTA</button>
           </div>
           {create ? (

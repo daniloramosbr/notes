@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { ContextJsx } from "../../context/context";
 import { useState } from "react";
 import ApiController from "../controllers/ApiController";
+import './edit.css'
+import Header from "../header/header";
 
 export default function Edit() {
   const [showError, setShowError] = useState(true);
@@ -45,9 +47,11 @@ export default function Edit() {
   }
 
   return (
-    <div className="create-cont">
-      <div className="create-main">
-        <div className="cont-main-create">
+    <div className="edit-cont">
+       <Header/>
+      <div className="edit-main">
+       
+        <div className="cont-main-edit">
           <h2>EDITAR NOTA:</h2>
           <form onSubmit={HandleChange}>
             <div>
@@ -66,7 +70,7 @@ export default function Edit() {
                 onChange={HandleChange}
               />
             </div>
-          </form>
+          </form >
           {!showError ? (
             <div className="error">
               <span>ERRO: PREECHA TODOS OS CAMPOS!</span>
@@ -74,7 +78,7 @@ export default function Edit() {
           ) : (
             ""
           )}
-          <div>
+          <div className="edit-note">
             <button onClick={UpdateText}>EDITAR NOTA</button>
           </div>
           {update ? (

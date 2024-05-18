@@ -25,7 +25,7 @@ class ApiController {
 
   async DeleteNotes(id) {
     try {
-      await axios.delete(`${url}/notes/${id}`);
+      await axios.delete(`https://api-notes-amber.vercel.app/notes/${id}`);
     } catch (error) {
       return error;
     }

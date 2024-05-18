@@ -7,16 +7,17 @@
   align-items: center;
   flex-direction: column;
   height: 100vh;
+  padding: 10px;
 }
 .login-main {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 550px;
   text-align: center;
-  background-color: rgb(62, 56, 111);
-  border-radius: 4px;
+  background-color: #2e0dc0;
+  border-radius: 5px;
   gap: 10px;
-  padding: 4px;
+  padding: 10px;
 }
 .login-main div {
   color: rgb(235, 235, 235);
@@ -25,7 +26,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   text-align: center;
   align-items: center;
 }
@@ -33,14 +33,18 @@
   font-family: "Poppins", sans-serif;
   height: 2rem;
   width: 100%;
+
 }
 .buttons button:hover {
   background-color: rgb(12, 0, 104);
   color: aliceblue;
 }
 form div input {
-  width: 50%;
-  height: 1.5rem;
+  width: 100%;
+  height: 2rem;
+  border: 0;
+  border-radius: 5px;
+  padding: 5px;
 }
 form {
   display: flex;
@@ -68,4 +72,23 @@ form {
     width: 90%;
     height: 1.7rem;
   }
+}
+.spinner {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 9px solid;
+  border-color: #dbdcef;
+  border-right-color: #0003cc;
+  animation: spinner-d3wgkg 1s infinite linear;
+}
+
+@keyframes spinner-d3wgkg {
+  to {
+     transform: rotate(1turn);
+  }
+}
+.load {
+display: flex;
+justify-content: center;
 }

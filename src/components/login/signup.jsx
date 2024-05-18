@@ -6,6 +6,7 @@ import ApiController from "../controllers/ApiController";
 
 export default function SignUp() {
   const [error, setError] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -32,15 +33,18 @@ export default function SignUp() {
       return;
     }
 
+    setLoading(true)
+
     try {
       const res = await ApiController.PostUser(dataForm);
 
       Cookies.set("token", res.data, { expires: 1 });
-
+      setLoading(false)
       navigate("/create");
     } catch (error) {
       console.log(error.message);
     }
+  
   }
 
   function GoSignIn() {
@@ -69,19 +73,18 @@ export default function SignUp() {
             </div>
             <div>
               <input
-                name="password"
+                name="password" type="password"
                 placeholder="Senha:"
                 onChange={HandleChange}
               />
             </div>
           </form>
-          {!error ? (
+          {!error && (
             <div className="error">
               <span> ERRO, PREENCHA TODOS OS CAMPOS!</span>
             </div>
-          ) : (
-            ""
-          )}
+          ) }
+         {loading && <div className="load"><div class="spinner"></div></div> }
           <div className="buttons">
             <button onClick={PostDados}>CADASTRAR</button>
             <button onClick={GoSignIn}>JÁ TEM CONTA? </button>
