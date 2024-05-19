@@ -1,14 +1,10 @@
 import "./home.css";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 
 export default function Home() {
 
-  console.log(Cookies.get())
-
   const navigate = useNavigate()
 
-  
   function GoSignIn() {
     navigate("/notes/signin");
   }

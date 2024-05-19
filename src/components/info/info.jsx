@@ -11,15 +11,17 @@ export default function Info() {
 
   const token = Cookies.get('token')
   const decode = jwtDecode(token)
-  const {id, user} = decode
+  const { user} = decode
 
   const navigate = useNavigate();
   const { data } = useContext(ContextJsx);
+
   async function DeleteNote() {
+
     try {
-      ApiController.DeleteNotes(data.id);
+     await ApiController.DeleteNotes(data.id);
+      
       navigate(`/notes/${user}`)
-     
     } catch (error) {
       console.log(error);
     }

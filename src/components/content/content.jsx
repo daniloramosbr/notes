@@ -12,9 +12,7 @@ export default function Content() {
   const navigate = useNavigate()
   const cookie = Cookies.get("token");
   const decode = jwtDecode(cookie);
-  const { id, user } = decode;
-
-  console.log(user)
+  const { id } = decode;
 
   const [showNotes, setShowNotes] = useState(false);
   const [showNothing, setNothing] = useState(false);
@@ -25,16 +23,12 @@ export default function Content() {
 
   useEffect(() => {
 
-    if (!user) {
-      navigate('/notes/signin')
-    }
-  
-
     async function GetDados() {
+      
       setLoading(true);
 
       try {
-        const res = await ApiController.GetNotes(id);
+        const res = await ApiController.GetNotes(id)
         setRes(res.data);
         setLoading(false);
         setShowNotes(true);
@@ -54,7 +48,6 @@ export default function Content() {
   function CreateNote() {
     navigate("/create");
   }
-
   return (
     <div className="content">
       <Header />
@@ -73,7 +66,7 @@ export default function Content() {
           {showNothing && <h3>VOCÊ AINDA NÃO TEM NOTAS</h3> }
 
           {showNotes
-            ? res.map((note) => {
+            && res.map((note) => {
                 return (
                   <Onecontent
                     key={note._id}
@@ -82,8 +75,7 @@ export default function Content() {
                     note={note.note}
                   />
                 );
-              })
-            : ""}
+              })}
         </div>
       </div>
     </div>
