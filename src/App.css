@@ -1,23 +1,23 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
-  
-  body {
-    background-color: #000000;
-  }
-  div {
-color: white;
-  }
-  .text {
-    background-color: aquamarine;
-  } 
-  button {
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+body {
+  background-color: rgb(2, 2, 34);
+}
+div {
+  color: white;
+}
+.text {
+  background-color: aquamarine;
+}
+button {
   cursor: pointer;
-  }
-  ion-icon {
+}
+ion-icon {
   cursor: pointer;
-  }
+}
