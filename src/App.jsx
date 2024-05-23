@@ -1,4 +1,4 @@
-import './App.css'
+import './App.scss'
 import RoutesApp from './routes/routesApp'
 
 export default function App() {

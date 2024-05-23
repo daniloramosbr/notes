@@ -1,5 +1,5 @@
-import { useContext, useState } from "react";
-import "./info.css";
+import { useContext } from "react";
+import "./info.scss";
 import { ContextJsx } from "../../context/context";
 import Header from "../header/header";
 import ApiController from "../controllers/ApiController";

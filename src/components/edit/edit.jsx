@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ContextJsx } from "../../context/context";
 import { useState } from "react";
 import ApiController from "../controllers/ApiController";
-import './edit.css'
+import './edit.scss'
 import Header from "../header/header";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";

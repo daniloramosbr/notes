@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./create.css";
+import "./create.scss";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
@@ -11,6 +11,7 @@ export default function Create() {
   const cookie = Cookies.get("token");
   const decode = jwtDecode(cookie);
   const { id, user } = decode;
+  const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate();
 
@@ -20,7 +21,6 @@ export default function Create() {
     texto: "",
   });
 
-  const [create, setCreate] = useState(false);
   const [error, setError] = useState(false);
 
   const handleReset = () => {
@@ -54,21 +54,17 @@ export default function Create() {
     }
 
     try {
+      setLoading(true)
       await ApiController.PostNotes(
         dataForm.user,
         dataForm.titulo,
         dataForm.texto
       );
-
-      setCreate(true);
-
-      setTimeout(() => {
-        setCreate(false);
-      }, 3000);
-
+      setLoading(false)
       navigate(`/notes/${user}`);
     } catch (error) {
       console.log(error.message);
+      setLoading(false)
     }
 
     handleReset();
@@ -94,22 +90,12 @@ export default function Create() {
               />
             </div>
           </form>
-
+          {loading &&<div className="load"><div class="spinner"></div></div> }
           <div className="button-create">
             <button onClick={CreateNote}>CRIAR NOTA</button>
           </div>
-          {create ? (
-            <div
-              style={{
-                color: "green",
-              }}
-            >
-              NOTA CRIADA COM SUCESSO!
-            </div>
-          ) : (
-            ""
-          )}
-          {error ? (
+        
+          {error && (
             <div
               style={{
                 color: "red",
@@ -117,8 +103,6 @@ export default function Create() {
             >
               ERRO, PREENCHA TODOS OS CAMPOS!
             </div>
-          ) : (
-            ""
           )}
         </div>
       </div>

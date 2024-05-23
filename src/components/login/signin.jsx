@@ -1,4 +1,4 @@
-import "./login.css";
+import "./login.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -72,15 +72,15 @@ export default function Signin() {
       <div className="login-cont">
         <main className="login-main">
           <h2 className="title">FAZER LOGIN:</h2>
-          <form onSubmit={HandleChange}>
-            <div>
+          <form onSubmit={HandleChange} className="form-input">
+            <div> <ion-icon name="mail-outline"></ion-icon>
               <input
                 name="email"
                 placeholder="Email:"
                 onChange={HandleChange}
               />
             </div>
-            <div>
+            <div> <ion-icon name="lock-closed-outline"></ion-icon>
               <input
                 name="password" type="password"
                 placeholder="Senha:"

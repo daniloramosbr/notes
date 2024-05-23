@@ -92,3 +92,12 @@ form {
 display: flex;
 justify-content: center;
 }
+.form-input div {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  ion-icon {
+    font-size: 25px;
+  }
+  }

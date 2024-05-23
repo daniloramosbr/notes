@@ -7,10 +7,9 @@
   align-items: center;
   height: 100vh;
   padding: 10px;
-
 }
 .home-main {
-    width: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   max-width: 500px;
@@ -19,18 +18,18 @@
   border-radius: 8px;
   gap: 20px;
   padding: 20px 10px 20px 10px;
-}
-.home-main h1 {
-  font-family: "Poppins", sans-serif;
+  h1 {
+    font-family: "Poppins", sans-serif;
+  }
 }
 .buttons {
-display: flex;
-gap: 5px;
-}
-.buttons button {
-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-background-color: #24099c;
-border: 1.5px solid rgb(0, 117, 212);
-color: #fff;
-border-radius: 5px;
+  display: flex;
+  gap: 5px;
+  button {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    background-color: #24099c;
+    border: 1.5px solid rgb(0, 117, 212);
+    color: #fff;
+    border-radius: 5px;
+  }
 }

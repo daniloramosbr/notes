@@ -1,6 +1,6 @@
 import Header from "../header/header";
 import Onecontent from "./onecontent";
-import "./content.css";
+import "./content.scss";
 import { useEffect, useState } from "react";
 import ApiController from "../controllers/ApiController";
 import Cookies from "js-cookie";
@@ -61,7 +61,7 @@ export default function Content() {
             <h2 hidden={notes}>SUAS NOTAS:</h2>
           </div>
 
-          {showLoading &&<div className="load"><div class="spinner"></div></div> }
+          {showLoading && <div className="load"><div class="spinner"></div></div> }
 
           {showNothing && <h3>VOCÊ AINDA NÃO TEM NOTAS</h3> }
 

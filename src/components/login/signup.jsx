@@ -1,4 +1,4 @@
-import "./login.css";
+import "./login.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -56,22 +56,22 @@ export default function SignUp() {
       <div className="login-cont">
         <main className="login-main">
           <h2 className="title">CRIE SUA CONTA:</h2>
-          <form onSubmit={HandleChange}>
-            <div>
+          <form onSubmit={HandleChange} className="form-input">
+            <div> <ion-icon name="person-outline"></ion-icon>
               <input
                 name="username"
                 placeholder="Usuário:"
                 onChange={HandleChange}
               />
             </div>
-            <div>
+            <div> <ion-icon name="mail-outline"></ion-icon>
               <input
                 name="email"
                 placeholder="Email:"
                 onChange={HandleChange}
               />
             </div>
-            <div>
+            <div> <ion-icon name="lock-closed-outline"></ion-icon>
               <input
                 name="password" type="password"
                 placeholder="Senha:"

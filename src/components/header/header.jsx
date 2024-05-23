@@ -1,5 +1,5 @@
 import { jwtDecode } from "jwt-decode";
-import "./header.css";
+import "./header.scss";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
