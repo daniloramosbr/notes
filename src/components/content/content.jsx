@@ -8,22 +8,29 @@ import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
 export default function Content() {
-  
+
   const navigate = useNavigate()
-  const cookie = Cookies.get("token");
-  const decode = jwtDecode(cookie);
-  const { id } = decode;
+
+  const token = Cookies.get("token");
+
+  const decode = token != undefined && jwtDecode(token)   //se token for diferente de undefined, faz o decoded
+
+  const {id} = decode && decode
 
   const [showNotes, setShowNotes] = useState(false);
   const [showNothing, setNothing] = useState(false);
   const [showLoading, setLoading] = useState(false);
   const [notes, setNotes] = useState(false);
-
+  
   const [res, setRes] = useState({});
 
   useEffect(() => {
 
     async function GetDados() {
+
+      if (token == undefined) {          //só entra se tiver logado
+        navigate('/notes/signin')
+      }
       
       setLoading(true);
 

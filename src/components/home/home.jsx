@@ -1,5 +1,6 @@
 import "./home.scss";
 import { useNavigate } from "react-router-dom";
+import Header from "../header/header";
 
 export default function Home() {
 
@@ -15,11 +16,11 @@ export default function Home() {
 
   return (
     <div className="home">
-
+       <Header/>
       <div className="cont-home">
-
+     
         <main className="home-main">
-
+         
           <h1>BLOCO DE NOTAS</h1>
 
           <div className="buttons">

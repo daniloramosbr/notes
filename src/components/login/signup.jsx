@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import ApiController from "../controllers/ApiController";
+import Header from "../header/header";
 
 export default function SignUp() {
   const [error, setError] = useState(true);
@@ -53,6 +54,7 @@ export default function SignUp() {
 
   return (
     <div className="login">
+        <Header/>
       <div className="login-cont">
         <main className="login-main">
           <h2 className="title">CRIE SUA CONTA:</h2>

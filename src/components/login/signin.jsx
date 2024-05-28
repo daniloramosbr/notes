@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import ApiController from "../controllers/ApiController";
+import Header from "../header/header";
 
 export default function Signin() {
   const [error, setError] = useState(false);
@@ -69,6 +70,7 @@ export default function Signin() {
 
   return (
     <div className="login">
+      <Header/>
       <div className="login-cont">
         <main className="login-main">
           <h2 className="title">FAZER LOGIN:</h2>
