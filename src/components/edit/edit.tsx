@@ -10,15 +10,14 @@ import Cookies from "js-cookie";
 
 export default function Edit() {
 
-  const cookie = Cookies.get("token");
-  const decode = jwtDecode(cookie);
+  const cookie: any = Cookies.get("token");
+  const decode: any = jwtDecode(cookie);
   const { user } = decode;
+  const [loading, setLoading] = useState(false)
 
 
   const navigate = useNavigate()
   const [showError, setShowError] = useState(true);
-
-  const [update, setUpdate] = useState(false);
 
   const { data } = useContext(ContextJsx);
 
@@ -27,7 +26,7 @@ export default function Edit() {
     texto: data.note,
   });
 
-  const HandleChange = (event) => {
+  const HandleChange = (event: any) => {
     setDataForm((dataForm) => ({
       ...dataForm,
       [event.target.name]: event.target.value,
@@ -46,10 +45,20 @@ export default function Edit() {
     }
 
     try {
-      ApiController.PatchNotes(dataForm.titulo, dataForm.texto, data.id);
+      setLoading(true)
+      await ApiController.PatchNotes(dataForm.titulo, dataForm.texto, data.id);
+      navigate(`/notes/${user}`);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-      setUpdate(true);
+  async function DeleteNote() {
 
+    try {
+     await ApiController.DeleteNotes(data.id);
+      
+      navigate(`/notes/${user}`)
     } catch (error) {
       console.log(error);
     }
@@ -61,10 +70,10 @@ export default function Edit() {
       <div className="edit-main">
        
         <div className="cont-main-edit">
-          <h2>EDITAR NOTA:</h2>
-          <form onSubmit={HandleChange}>
+          <h1>EDITAR NOTA:</h1>
+          <form onSubmit={HandleChange} className="inputs-note">
             <div>
-              <label htmlFor="titulo">TITULO:</label>
+              <label htmlFor="titulo">TITULO DA NOTA:</label>
               <input
                 name="titulo"
                 value={dataForm.titulo}
@@ -73,13 +82,16 @@ export default function Edit() {
             </div>
             <div>
               <label htmlFor="texto">TEXTO:</label>
-              <input
+              <textarea
+              className="text-input"
                 name="texto"
                 value={dataForm.texto}
                 onChange={HandleChange}
               />
             </div>
-          </form >
+                
+              </form >
+              {loading &&<div className="load"><div className="spinner"></div></div> }
           {!showError && (
             <div className="error">
               <span>ERRO: PREECHA TODOS OS CAMPOS!</span>
@@ -88,22 +100,10 @@ export default function Edit() {
           <div className="edit-note">
             <button onClick={UpdateText}>EDITAR NOTA</button>
           </div>
-          {update && (
-            <h3
-              style={{
-                color: "#fffff",
-              }}
-            >
-              <div className="edit-note">
-              NOTA ATUALIZADA COM SUCESSO!
-              <button onClick={(()=>{
-                navigate(`/notes/${user}`)
-              })}>VOLTAR</button>
-
-              </div>
-             
-            </h3>
-          ) }
+          <div className="delete-note">
+  <button onClick={DeleteNote}>APAGAR NOTA</button>
+</div>
+          
         </div>
       </div>
     </div>

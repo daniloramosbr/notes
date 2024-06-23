@@ -2,79 +2,70 @@ import "./login.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import { jwtDecode } from "jwt-decode";
 import ApiController from "../controllers/ApiController";
 import Header from "../header/header";
 
-export default function Signin() {
-  const [error, setError] = useState(false);
-  const [ErrLogin, setErrLogin] = useState(false);
+export default function SignUp() {
+  const [error, setError] = useState(true);
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const [dataForm, setDataForm] = useState({
+    username: "",
     email: "",
     password: "",
   });
 
-  const HandleChange = (event) => {
+  const HandleChange = (event: any) => {
     setDataForm((dataForm) => ({
       ...dataForm,
       [event.target.name]: event.target.value,
     }));
   };
 
-  async function GetSignin() {
-    if (!dataForm.email || !dataForm.password) {
-      setError(true);
+  async function PostDados() {
+    if (!dataForm.email || !dataForm.password || !dataForm.username) {
+      setError(false);
 
       setTimeout(() => {
-        setError(false);
+        setError(true);
       }, 3000);
       return;
     }
 
-    setLoading(true);
+    setLoading(true)
 
     try {
-      const res = await ApiController.ValidLogin(
-        dataForm.email,
-        dataForm.password
-      );
+      const res: any = await ApiController.PostUser(dataForm);
 
       Cookies.set("token", res.data, { expires: 1 });
-
-      const decode = jwtDecode(res.data);
-
-      const { user } = decode;
-
-      navigate(`/notes/${user}`);
-
-      setLoading(false);
+      setLoading(false)
+      navigate("/create");
     } catch (error) {
-      if (error) {
-        setErrLogin(true);
-        setLoading(false);
-
-        setTimeout(() => {
-          setErrLogin(false);
-        }, 3000);
-      }
+      console.log(error);
     }
+  
   }
 
-  function GoSignUp() {
-    navigate("/notes/signup");
+  function GoSignIn() {
+    navigate("/notes/signin");
   }
 
   return (
     <div className="login">
-      <Header/>
+        <Header/>
       <div className="login-cont">
         <main className="login-main">
-          <h2 className="title">FAZER LOGIN:</h2>
+          <h2 className="title">CRIE SUA CONTA:</h2>
           <form onSubmit={HandleChange} className="form-input">
+            <div> <ion-icon name="person-outline"></ion-icon>
+              <input
+                name="username"
+                placeholder="Usuário:"
+                onChange={HandleChange}
+              />
+            </div>
             <div> <ion-icon name="mail-outline"></ion-icon>
               <input
                 name="email"
@@ -90,20 +81,15 @@ export default function Signin() {
               />
             </div>
           </form>
-          {error && (
+          {!error && (
             <div className="error">
               <span> ERRO, PREENCHA TODOS OS CAMPOS!</span>
             </div>
-          )}
-          {ErrLogin && (
-            <div className="error">
-              <span> ERRO: SENHA OU USUARIO INCORRETOS!</span>
-            </div>
           ) }
-          {loading && <div className="load"><div class="spinner"></div></div> }
+         {loading && <div className="load"><div className="spinner"></div></div> }
           <div className="buttons">
-            <button onClick={GetSignin}>ENTRAR</button>
-            <button onClick={GoSignUp}> CRIAR NOVA CONTA</button>
+            <button onClick={PostDados}>CADASTRAR</button>
+            <button onClick={GoSignIn}>JÁ TEM CONTA? </button>
           </div>
         </main>
       </div>

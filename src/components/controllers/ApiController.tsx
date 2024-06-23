@@ -3,15 +3,15 @@ import axios from "axios";
 const url = "https://api-notes-amber.vercel.app";
 
 class ApiController {
-  async GetNotes(user) {
+  async GetNotes(user: string){
     try {
       return await axios.get(`${url}/notes/${user}`);
     } catch (error) {
-      return error.message;
+      return error
     }
   }
 
-  async PostNotes(id, title, note) {
+  async PostNotes(id: string, title: string, note: string) {
     try {
       return await axios.post(`${url}/notes`, {
         user: id,
@@ -23,7 +23,7 @@ class ApiController {
     }
   }
 
-  async DeleteNotes(id) {
+  async DeleteNotes(id: string) {
     try {
       await axios.delete(`https://api-notes-amber.vercel.app/notes/${id}`);
     } catch (error) {
@@ -31,7 +31,7 @@ class ApiController {
     }
   }
 
-  PatchNotes(title, note, id) {
+  PatchNotes(title: string, note: string, id: string) {
     try {
       return axios.patch(`${url}/notes/${id}`, {
         title: title,
@@ -42,18 +42,18 @@ class ApiController {
     }
   }
 
-  ValidLogin(email, password) {
+  ValidLogin(email: string, password: string) {
     try {
       return axios.post(`${url}/signin`, {
         email: email,
         password: password,
       });
     } catch (error) {
-      return error.message;
+      return error
     }
   }
 
-  async PostUser(data) {
+  async PostUser(data :any) {
     try {
       return await axios.post(
         "https://api-notes-amber.vercel.app/signup",

@@ -21,7 +21,7 @@ export default function Home() {
      
         <main className="home-main">
          
-          <h1>BLOCO DE NOTAS</h1>
+          <h1>BLOCO DE NOTAS <ion-icon name="reader-outline"></ion-icon></h1>
 
           <div className="buttons">
             <button onClick={GoSignIn}>FAZER LOGIN</button>

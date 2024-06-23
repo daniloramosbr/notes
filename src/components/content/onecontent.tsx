@@ -1,14 +1,22 @@
 import { useContext } from "react";
 import { ContextJsx } from "../../context/context";
 import { useNavigate } from "react-router-dom";
-export default function Onecontent({ title, note, id }) {
+
+interface info {
+  title: string;
+  note: string;
+  id: string;
+}
+
+
+export default function Onecontent({ title, note, id }: info) {
   const navigate = useNavigate();
 
   const { setData } = useContext(ContextJsx);
 
   return (
-    <div
-      className="one-container"
+    <div className="one-container"
+      
       onClick={() => {
         const dat = {
           title: title,
@@ -17,7 +25,7 @@ export default function Onecontent({ title, note, id }) {
         };
 
         setData(dat);
-        navigate(`/info/${title}`);
+        navigate(`/edit/${title}`);
       }}
     >
       <h2>{title}</h2>

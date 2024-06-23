@@ -8,8 +8,8 @@ import ApiController from "../controllers/ApiController";
 
 export default function Create() {
   
-  const cookie = Cookies.get("token");
-  const decode = jwtDecode(cookie);
+  const cookie: any = Cookies.get("token");
+  const decode: any = jwtDecode(cookie);
   const { id, user } = decode;
   const [loading, setLoading] = useState(false)
 
@@ -35,7 +35,7 @@ export default function Create() {
     });
   };
 
-  const HandleChange = (event) => {
+  const HandleChange = (event: any) => {
     setDataForm((dataForm) => ({
       ...dataForm,
       [event.target.name]: event.target.value,
@@ -63,7 +63,7 @@ export default function Create() {
       setLoading(false)
       navigate(`/notes/${user}`);
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
       setLoading(false)
     }
 
@@ -75,22 +75,23 @@ export default function Create() {
       <Header />
       <div className="create-main">
         <div className="cont-main-create">
-          <h2>CRIAR NOVA NOTA</h2>
+          <h1>CRIAR NOVA NOTA</h1>
 
-          <form onSubmit={HandleChange}>
+          <form onSubmit={HandleChange} className="inputs-note">
             <div>
-              <label htmlFor="titulo">TITULO:</label>
+              <label htmlFor="titulo">TITULO DA NOTA:</label>
               <input name="titulo" onChange={HandleChange} />
             </div>
             <div>
               <label htmlFor="texto">TEXTO:</label>
-              <input
+              <textarea
+              className="text-input"
                 name="texto"
                 onChange={HandleChange}
               />
             </div>
           </form>
-          {loading &&<div className="load"><div class="spinner"></div></div> }
+          {loading &&<div className="load"><div className="spinner"></div></div> }
           <div className="button-create">
             <button onClick={CreateNote}>CRIAR NOTA</button>
           </div>
