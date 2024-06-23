@@ -12,9 +12,9 @@ export default function Header() {
 
   const token: any = Cookies.get("token");
 
-  const decoded: any = token ? jwtDecode(token) : null
+  const decoded: any = token && jwtDecode(token) 
 
-  const { user } = decoded && decoded;
+  const { user } = decoded != undefined && decoded;
 
   const LogoutNotes = () => {
     Cookies.remove("token");
